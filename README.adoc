@@ -49,6 +49,18 @@ I checked out the features of JGraphT using link:src/test/groovy/ch/petikoch/exa
 
 |===
 
+=== Analysis regarding visualization of graphs
+
+[cols="3*", options="header"]
+|===
+|Feature
+|JGraphT
+|jtwfg
+
+|Export to other formats like DOT, GML, ...
+|*Yes*
+|*No*
+|===
 
 === Analysis regarding preconditions for usage
 
