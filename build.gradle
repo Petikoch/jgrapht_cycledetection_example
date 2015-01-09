@@ -1,0 +1,41 @@
+apply plugin: 'java'
+apply plugin: 'groovy'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+ext.fileEncoding = 'UTF-8'
+
+version = '1.0'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile 'org.jgrapht:jgrapht-core:0.9.0'
+
+	testCompile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.3.9', classifier: 'indy'
+	testCompile('org.spockframework:spock-core:0.7-groovy-2.0') {
+		exclude group: 'org.codehaus.groovy'
+	}
+	testCompile 'com.google.guava:guava:18.0' // provides e.g. nice Multimap
+}
+
+test {
+	systemProperty 'file.encoding', project.fileEncoding
+}
+
+tasks.withType(GroovyCompile) {
+	groovyOptions.encoding = project.fileEncoding
+	options.encoding = project.fileEncoding
+}
+
+tasks.withType(JavaCompile) {
+	options.encoding = project.fileEncoding
+}
+
+// http://forums.gradle.org/gradle/topics/set_maxparallelforks_to_number_of_cores_on_the_current_machine
+tasks.withType(Test) {
+	maxParallelForks = Runtime.getRuntime().availableProcessors()
+}

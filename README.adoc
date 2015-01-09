@@ -1,0 +1,39 @@
+= JGrapht cycle detection example
+Peti Koch
+
+== Comparing JGraphT with jtwfg regarding cycle detection
+
+=== JGraphT, jtwfg ... wtf?
+
+https://github.com/jgrapht/jgrapht[JGraphT] is a feature-rich java library with a long history,
+focusing on graph data structures and algorithms.
+
+https://github.com/Petikoch/jtwfg[jtwfg] is a small, standalone java library focusing just on finding deadlocks (cycles)
+in directed graphs. jtwfg was just started in late 2014.
+
+=== Motivation
+
+I'm the author of jtwfg and didn't know about JGraphT when I started jtwfg.
+I wondered if JGraphT could solve the same problem as jtwfg and therefore jtwfg is obsolete and could be deleted.
+
+=== Analysis
+
+I checked out the features of JGraphT using link:src/test/groovy/ch/petikoch/examples/jgrapht/JGraphT_CycleDetection_Example.groovy[tests based on Groovy/Spock]
+
+And here is my summary regarding cycle detection / deadlock finding ...
+
+[cols="3*", options="header"]
+|===
+|Feature
+|JGraphT
+|jtwfg
+
+|*Thread-safety*: Building a graph concurrently using multiple threads
+|*No*. Synchronization must be written yourself (although not very tricky)
+|*Yes*
+
+|*Thread-safety*: Building a graph concurrently using multiple threads
+|*No*. Synchronization must be written yourself (although not very tricky)
+|*Yes*
+|===
+
