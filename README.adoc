@@ -1,26 +1,25 @@
-= JGrapht cycle detection example
+= Comparing JGraphT with jtwfg regarding cycle (deadlock) detection
 Peti Koch
+:imagesdir: ./images
 
-== Comparing JGraphT with jtwfg regarding cycle detection
-
-=== JGraphT, jtwfg ... wtf?
+== JGraphT, jtwfg ... wtf?
 
 https://github.com/jgrapht/jgrapht[JGraphT] is a feature-rich java library with a long history,
 focusing on graph data structures and algorithms.
 
 https://github.com/Petikoch/jtwfg[jtwfg] is a small, standalone java library focusing just on finding deadlocks (cycles)
-in directed graphs. jtwfg was just started in late 2014.
+in directed graphs. jtwfg is pretty new (started in late 2014).
 
-=== Motivation
+== Motivation
 
-I'm the author of jtwfg and didn't know about JGraphT when I started jtwfg.
+My name is Peti Koch. I'm the author of jtwfg and didn't know about JGraphT when I started jtwfg.
 I wondered if JGraphT could solve the same problem as jtwfg and therefore jtwfg is obsolete and could be deleted.
 
-=== Analysis
+== Analysis
 
-I checked out the features of JGraphT using link:src/test/groovy/ch/petikoch/examples/jgrapht/JGraphT_CycleDetection_Example.groovy[tests based on Groovy/Spock]
+I checked out the features of JGraphT using link:src/test/groovy/ch/petikoch/examples/jgrapht/JGraphT_CycleDetection_Example.groovy[tests based on Groovy/Spock].
 
-And here is my summary regarding cycle detection / deadlock finding ...
+=== Analysis regarding cycle detection / deadlock finding
 
 [cols="3*", options="header"]
 |===
@@ -28,12 +27,55 @@ And here is my summary regarding cycle detection / deadlock finding ...
 |JGraphT
 |jtwfg
 
-|*Thread-safety*: Building a graph concurrently using multiple threads
-|*No*. Synchronization must be written yourself (although not very tricky)
+|Determine if there are cycles or not in the graph
+|*Yes*
+|*Yes*
+
+|Finding which tasks/vertexes are in a cycle
+|*Yes*
+|*Yes*
+
+|Finding distinct cycles
+|*No*
+|*Yes*
+
+|Finding tasks/vertexes outside of a cycle but dependent on a task/vertex which is in a cycle (these tasks/vertexes are also "deadlocked")
+|*No*
 |*Yes*
 
 |*Thread-safety*: Building a graph concurrently using multiple threads
-|*No*. Synchronization must be written yourself (although not very tricky)
+|*No*. Synchronization must be handled yourself (although not very tricky)
 |*Yes*
+
 |===
 
+
+=== Analysis regarding preconditions for usage
+
+[cols="3*", options="header"]
+|===
+|Feature
+|JGraphT
+|jtwfg
+
+|Dependencies on other libs
+|none (jgrapht-core)
+|none
+
+|Minimum JRE version
+|Java *6*
+|Java *7*
+
+|Licence
+|LGPL 2.1 and EPL 1.0
+|Apache 2.0
+|===
+
+
+== Summary
+
+Puuhhh... there are some reasons to keep *jtwfg* and *not delete* it! ;-)
+
+Best regards,
+
+image::Signature.jpg[]
