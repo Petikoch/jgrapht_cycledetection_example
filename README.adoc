@@ -2,12 +2,15 @@
 Peti Koch
 :imagesdir: ./images
 
+Peti Koch +
+9 January 2015
+
 == JGraphT, jtwfg ... wtf?
 
 https://github.com/jgrapht/jgrapht[JGraphT] is a feature-rich java library with a long history,
 focusing on graph data structures and algorithms.
 
-https://github.com/Petikoch/jtwfg[jtwfg] is a small, standalone java library focusing just on finding deadlocks (cycles)
+https://github.com/Petikoch/jtwfg[jtwfg] is a small java library focusing just on finding deadlocks (cycles)
 in directed graphs. jtwfg is pretty new (started in late 2014).
 
 == Motivation
@@ -17,7 +20,7 @@ I wondered if JGraphT could solve the same problem as jtwfg and therefore jtwfg 
 
 == Analysis
 
-I checked out the features of JGraphT using link:src/test/groovy/ch/petikoch/examples/jgrapht/JGraphT_CycleDetection_Example.groovy[tests based on Groovy/Spock].
+I checked out the features of JGraphT using link:src/test/groovy/ch/petikoch/examples/jgrapht/JGraphT_CycleDetection_Example.groovy[these tests] (based on Groovy/Spock).
 
 === Analysis regarding cycle detection / deadlock finding
 
@@ -57,7 +60,7 @@ I checked out the features of JGraphT using link:src/test/groovy/ch/petikoch/exa
 |JGraphT
 |jtwfg
 
-|Export to other formats like DOT, GML, ...
+|Export to other formats like e.g. DOT, GML, ...
 |*Yes*
 |*No*
 |===
@@ -71,7 +74,7 @@ I checked out the features of JGraphT using link:src/test/groovy/ch/petikoch/exa
 |jtwfg
 
 |Dependencies on other libs
-|none (jgrapht-core)
+|none (jgrapht-core). Other jgrapht-modules: various
 |none
 
 |Minimum JRE version
